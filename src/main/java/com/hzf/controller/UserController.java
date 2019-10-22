@@ -20,25 +20,6 @@ import java.io.IOException;
 public class UserController {
     @Autowired
     private UserService userService;
-
-    //    @GetMapping("/register")
-//    public String register(HttpSession session, User user, Model model){
-//        String checkCode = (String) session.getAttribute("CHECKCODE_SERVER");
-//        boolean  judgeCheckCode= userService.checkCode(checkCode, user);
-//        if (judgeCheckCode){
-//            boolean judgeUsername = userService.findUsername(user);
-//            if (judgeUsername){
-//                model.addAttribute("msg","此用户名已经存在");
-//                return "register";
-//            }else{
-//                userService.registe(user);
-//            }
-//        }else{
-//            model.addAttribute("msg","验证码错误");
-//            return "register";
-//        }
-//        return "register";
-//    }
     @ResponseBody
     @GetMapping("/register")
     public ResultInfo register(HttpSession session, User user) {
@@ -61,7 +42,6 @@ public class UserController {
             resultInfo.setErrorMsg("验证码错误");
             return resultInfo;
         }
-//        return "register";
         return resultInfo;
     }
 
@@ -112,9 +92,6 @@ public class UserController {
             resultInfo.setErrorMsg("验证码错误");
             return resultInfo;
         }
-//        System.out.println(user);
-//        System.out.println(checkCode);
-        //boolean judgeUsername = userService.findUsername(user);
     }
     @PostMapping("/findname")
     @ResponseBody
